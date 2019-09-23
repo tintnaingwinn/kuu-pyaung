@@ -1,4 +1,4 @@
-# Convert blade and lang files from zawgyi to unicode for Laravel apps
+# Convert files from zawgyi to unicode for Laravel apps
 
 ## Installation and usage
 
@@ -14,8 +14,6 @@ php artisan kuupyaung:run
 
 ## Todo
 - Convert database
-- Convert only database
-- Convert only files
 - Backup database
 
 ## Testing
