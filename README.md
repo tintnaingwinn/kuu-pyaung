@@ -1,5 +1,7 @@
 # Convert files from zawgyi to unicode for Laravel apps
 
+:warning: still working on it :warning:
+
 ## Installation and usage
 
 ```
@@ -13,7 +15,7 @@ php artisan kuupyaung:run
 ```
 
 ## Todo
-- Convert database
+- Convert database (high priority on mysql)
 - Backup database
 
 ## Testing
