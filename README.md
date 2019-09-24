@@ -1,11 +1,17 @@
 # Convert files from zawgyi to unicode for Laravel apps
 
-:warning: still working on it :warning:
+:warning: **This package is under development and is not suitable for production use.** :warning:
 
 ## Installation and usage
 
-```
+``` bash
 composer require tintnaingwin/kuu-pyaung
+```
+
+You can publish the config-file with:
+
+``` bash
+php artisan vendor:publish --provider="Tintnaingwin\KuuPyaung\KuuPyaungServiceProvider"
 ```
 
 You can convert your app by running:
@@ -15,10 +21,12 @@ php artisan kuupyaung:run
 ```
 
 ## Todo
+
 - Convert database (high priority on mysql)
 - Backup database
 
 ## Testing
+
 Run the tests with:
 
 ``` bash

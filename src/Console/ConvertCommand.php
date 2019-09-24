@@ -47,10 +47,13 @@ class ConvertCommand extends Command
         }
     }
 
+    /**
+     * Check the against invalid options.
+     */
     protected function guardAgainstInvalidOptions()
     {
         if ($this->option('only-database') && $this->option('only-files')) {
-            throw InvalidCommand::create('Cannot use `only-database` and `only-files` together');
+            throw InvalidCommand::create('Cannot use only-database and only-files together');
         }
     }
 }

@@ -20,22 +20,14 @@ abstract class TestCase extends Orchestra
         ];
     }
 
-    /**
-     * @param \Illuminate\Foundation\Application $app
-     */
-    protected function getEnvironmentSetUp($app)
-    {
-
-    }
-
     protected function seeInConsoleOutput($expectedText)
     {
         $consoleOutput = $this->app[Kernel::class]->output();
 
-        $this->assertStringContainsString(
+        $this->assertContains(
             $expectedText,
             $consoleOutput,
-            "Did not see `{$expectedText}` in console output: `$consoleOutput`"
+            "Did not see `{$expectedText}` in console output: `{$consoleOutput}`"
         );
     }
 
