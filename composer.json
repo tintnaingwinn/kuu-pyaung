@@ -25,7 +25,7 @@
     "illuminate/events": "~5.5.0|~5.6.0|~5.7.0",
     "illuminate/filesystem": "~5.5.0|~5.6.0|~5.7.0",
     "illuminate/support": "~5.5.0|~5.6.0|~5.7.0",
-    "tintnaingwin/myanfont": "2.*"
+    "tintnaingwin/myanfont": "1.*|2.*"
   },
   "require-dev": {
     "mockery/mockery": "^1.0",
