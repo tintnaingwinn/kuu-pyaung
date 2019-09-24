@@ -10,10 +10,7 @@ class ConvertCommandTest extends TestCase
     /** @test */
     public function it_will_fail_when_try_to_convert_only_the_files_and_only_the_db()
     {
-        $resultCode = Artisan::call('kuupyaung:run', [
-            '--only-files' => true,
-            '--only-database' => true
-        ]);
+        $resultCode = Artisan::call('kuupyaung:run --only-files --only-database');
 
         $this->assertEquals(1, $resultCode);
 
