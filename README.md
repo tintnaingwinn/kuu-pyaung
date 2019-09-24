@@ -12,7 +12,12 @@
 #### version-2.x
 
 - [PHP >= 7.0](http://php.net/)
-- [Laravel 5.5|5.6|5.7|5.8|6.x](https://github.com/laravel/framework)
+- [Laravel 5.5|5.6|5.7](https://github.com/laravel/framework)
+
+#### version-3.x
+
+- [PHP >= 7.2](http://php.net/)
+- [Laravel 5.8|6.x](https://github.com/laravel/framework)
 
 ## Laravel Version Compatibility
 
@@ -24,13 +29,22 @@
 | 5.5.x   | 2.x     | >=7.0.0 |
 | 5.6.x   | 2.x     | >=7.1.3 |
 | 5.7.x   | 2.x     | >=7.1.3 |
-| 5.8.x   | 2.x     | >=7.1.3 |
-| 6.x     | 2.x     | >=7.2.0 |
+| 5.8.x   | 3.x     | >=7.2.0 |
+| 6.x     | 3.x     | >=7.2.0 |
  
 ## Installation and usage
 
 ``` bash
 composer require tintnaingwin/kuu-pyaung
+```
+
+For laravel >=5.5 that's all. This package supports Laravel new [Package Discovery](https://laravel.com/docs/5.5/packages#package-discovery).
+
+If you are using Laravel < 5.5, you also need to add the service provider class to your project's `config/app.php` file:
+
+##### Service Provider
+```php
+Tintnaingwin\KuuPyaung\KuuPyaungServiceProvider::class,
 ```
 
 You can publish the config-file with:
