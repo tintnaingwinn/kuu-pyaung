@@ -38,6 +38,15 @@
 composer require tintnaingwin/kuu-pyaung
 ```
 
+For laravel >=5.5 that's all. This package supports Laravel new [Package Discovery](https://laravel.com/docs/5.5/packages#package-discovery).
+
+If you are using Laravel < 5.5, you also need to add the service provider class to your project's `config/app.php` file:
+
+##### Service Provider
+```php
+Tintnaingwin\KuuPyaung\KuuPyaungServiceProvider::class,
+```
+
 You can publish the config-file with:
 
 ``` bash
