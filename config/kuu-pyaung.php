@@ -11,9 +11,9 @@ return [
     ],
 
     'database' => [
-       /*
-        * These tables will be excluded from the convert.
-        */
+        /*
+         * These tables will be excluded from the convert.
+         */
         'exclude_tables' => [
             'migrations',
             'telescope_entries',
