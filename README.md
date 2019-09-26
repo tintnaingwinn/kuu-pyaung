@@ -1,15 +1,13 @@
-# Convert files from zawgyi to unicode for Laravel apps
-
-:warning: **This package is under development and is not suitable for production use.** :warning:
+# Convert files and database from zawgyi to unicode for Laravel apps
 
 ## Requirements
 
-#### version-1.x
+#### version-1.x (under development)
 
 - [PHP >= 5.6.4](http://php.net/)
 - [Laravel 5.2|5.3|5.4](https://github.com/laravel/framework)
 
-#### version-2.x
+#### version-2.x (under development)
 
 - [PHP >= 7.0](http://php.net/)
 - [Laravel 5.5|5.6|5.7](https://github.com/laravel/framework)
@@ -61,7 +59,6 @@ php artisan kuupyaung:run
 
 ## Todo
 
-- Convert database (high priority on mysql)
 - Backup database
 
 ## Testing
