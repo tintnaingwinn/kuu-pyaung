@@ -1,8 +1,10 @@
 <?php
+
 namespace Tintnaingwin\KuuPyaung;
 
 use Illuminate\Support\ServiceProvider;
 use Tintnaingwin\KuuPyaung\Console\ConvertCommand;
+use Tintnaingwin\KuuPyaung\Helpers\CommandOutput;
 
 class KuuPyaungServiceProvider extends ServiceProvider
 {
@@ -28,5 +30,7 @@ class KuuPyaungServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/kuu-pyaung.php', 'kuu-pyaung');
 
         $this->commands(ConvertCommand::class);
+
+        $this->app->singleton(CommandOutput::class);
     }
 }

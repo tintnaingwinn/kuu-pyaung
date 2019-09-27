@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Console\Command;
 use Tintnaingwin\KuuPyaung\Convert\ConvertJobFactory;
 use Tintnaingwin\KuuPyaung\Exceptions\InvalidCommand;
+use Tintnaingwin\KuuPyaung\Helpers\CommandOutput;
 
 class ConvertCommand extends Command
 {
@@ -18,6 +19,8 @@ class ConvertCommand extends Command
      */
     public function handle()
     {
+        app(CommandOutput::class)->bind($this);
+
         try {
 
             $this->guardAgainstInvalidOptions();

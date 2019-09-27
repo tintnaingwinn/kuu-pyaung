@@ -20,6 +20,7 @@
   ],
   "require": {
     "php": ">=7.0",
+    "doctrine/dbal": "^2.5|^2.9",
     "illuminate/console": "~5.5.0|~5.6.0|~5.7.0",
     "illuminate/contracts": "~5.5.0|~5.6.0|~5.7.0",
     "illuminate/events": "~5.5.0|~5.6.0|~5.7.0",
@@ -35,7 +36,10 @@
   "autoload": {
     "psr-4": {
       "Tintnaingwin\\KuuPyaung\\": "src"
-    }
+    },
+    "files": [
+      "src/Helpers/helpers.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {
