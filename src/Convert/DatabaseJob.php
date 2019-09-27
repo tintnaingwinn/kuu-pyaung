@@ -189,7 +189,7 @@ class DatabaseJob
 
         $columns = $this->filterTableColumns($columns);
 
-        return array_map('self::removeBacktick', array_keys($columns));
+        return array_map('self::removeExtraQuotes', array_keys($columns));
     }
 
     /**
@@ -214,11 +214,14 @@ class DatabaseJob
     }
 
     /**
+     * Remove the extra quotes.
+     *
      * @param string $value
      * @return string
      */
-    protected function removeBacktick($value) {
-        return trim($value,"`");
+    protected function removeExtraQuotes($value) {
+
+        return str_replace( array( "`", '"', "'" ),'',$value);
     }
 
     /**
