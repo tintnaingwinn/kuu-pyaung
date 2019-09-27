@@ -189,7 +189,7 @@ class DatabaseJob
 
         $columns = $this->filterTableColumns($columns);
 
-        return array_keys($columns);
+        return array_map('self::removeBacktick', array_keys($columns));
     }
 
     /**
@@ -211,6 +211,14 @@ class DatabaseJob
             });
 
         return $columns;
+    }
+
+    /**
+     * @param string $value
+     * @return string
+     */
+    protected function removeBacktick($value) {
+        return trim($value,"`");
     }
 
     /**
