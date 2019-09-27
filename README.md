@@ -132,6 +132,12 @@ This package convert only `string` data types from database. You can determine w
 
 **We highly recommend that you should use maintenance mode when you convert the database tables in production server.**
 
+### Supported databases
+
+- MySQL
+- PostgreSQL
+- SQLite
+
 ## Todo
 
 - Backup database
