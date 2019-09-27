@@ -50,6 +50,7 @@ You can publish the config-file with:
 ``` bash
 php artisan vendor:publish --provider="Tintnaingwin\KuuPyaung\KuuPyaungServiceProvider"
 ```
+## Artisan commands
 
 You can convert your app by running:
 
@@ -57,9 +58,85 @@ You can convert your app by running:
 php artisan kuupyaung:run
 ```
 
+If you would like to convert only the files, run:
+``` bash
+php artisan kuupyaung:run --only-files
+```
+
+If you would like to convert only the database, run:
+``` bash
+php artisan kuupyaung:run --only-database
+```
+
+## Configuration
+
+Kuu Pyaung can be configured directly in /config/kuu-pyaung.php.
+
+This is the contents of the published config file:
+``` php
+return [
+
+    /*
+     * These resource directories only will be convert.
+     */
+    'include_files' => [
+        'views',
+        'lang', // lang/my
+    ],
+
+    /*
+     * These database tables will be excluded from the convert.
+     */
+    'exclude_tables' => [
+        'password_resets',
+        'migrations',
+        'failed_jobs',
+        'telescope_entries',
+        'telescope_entries_tags',
+        'telescope_monitoring',
+    ],
+];
+```
+
+**Files Convert**
+
+This package convert only folder under the `resource directories`. You can determine which resource files will be convert. 
+
+``` php
+    /*
+     * These resource directories only will be convert.
+     */
+    'include_files' => [
+        'views',
+        'lang', // lang/my
+    ],
+```
+
+**Database Convert**
+
+This package convert only `string` data types from database. You can determine which tables will be excluded from the convert. 
+
+``` php
+    /*
+     * These database tables will be excluded from the convert.
+     */
+    'exclude_tables' => [
+            'password_resets',
+            'migrations',
+            'failed_jobs',
+            'telescope_entries',
+            'telescope_entries_tags',
+            'telescope_monitoring',
+    ],
+```
+
+**We highly recommend that you should use maintenance mode when you convert the database tables in production server.**
+
 ## Todo
 
 - Backup database
+- Restore database
+- Convert database with UI
 
 ## Testing
 
