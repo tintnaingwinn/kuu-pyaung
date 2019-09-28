@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Console\Command;
 use Tintnaingwin\KuuPyaung\Convert\ConvertJobFactory;
 use Tintnaingwin\KuuPyaung\Exceptions\InvalidCommand;
+use Tintnaingwin\KuuPyaung\Helpers\CommandOutput;
 
 class ConvertCommand extends Command
 {
@@ -18,14 +19,12 @@ class ConvertCommand extends Command
      */
     public function handle()
     {
-        try {
+        app(CommandOutput::class)->bind($this);
 
+        try {
             $this->guardAgainstInvalidOptions();
 
-            $this->info('Starting convert from zawgyi to unicode...');
-            $this->output->newLine();
-
-            $convertJob = ConvertJobFactory::create($this);
+            $convertJob = ConvertJobFactory::create();
 
             if ($this->option('only-database')) {
                 $convertJob->dontConvertFiles();
@@ -53,7 +52,7 @@ class ConvertCommand extends Command
     protected function guardAgainstInvalidOptions()
     {
         if ($this->option('only-database') && $this->option('only-files')) {
-            throw InvalidCommand::create('Cannot use only-database and only-files together');
+            throw InvalidCommand::create('Cannot use `only-database` and `only-files` together');
         }
     }
 }

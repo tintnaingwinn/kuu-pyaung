@@ -20,22 +20,26 @@
   ],
   "require": {
     "php": ">=5.6",
-    "illuminate/console": "^5.2",
-    "illuminate/contracts": "^5.2",
-    "illuminate/events": "^5.2",
-    "illuminate/filesystem": "^5.2",
-    "illuminate/support": "^5.2",
-    "tintnaingwin/myanfont": "^0.2"
+    "illuminate/console": "~5.2|~5.3|~5.4",
+    "illuminate/contracts": "~5.2|~5.3|~5.4",
+    "illuminate/events": "~5.2|~5.3|~5.4",
+    "illuminate/filesystem": "~5.2|~5.3|~5.4",
+    "illuminate/support": "~5.2|~5.3|~5.4",
+    "tintnaingwin/myanfont": "^0.2",
+    "doctrine/dbal": "^2.5"
   },
   "require-dev": {
     "mockery/mockery": "^1.0",
-    "orchestra/testbench": "3.*",
+    "orchestra/testbench": "~3.2|~3.3|~3.4",
     "phpunit/phpunit": "^4.8|^5.7"
   },
   "autoload": {
     "psr-4": {
       "Tintnaingwin\\KuuPyaung\\": "src"
-    }
+    },
+    "files": [
+      "src/Helpers/helpers.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {

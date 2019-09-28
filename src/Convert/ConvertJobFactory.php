@@ -2,18 +2,31 @@
 
 namespace Tintnaingwin\KuuPyaung\Convert;
 
-use Illuminate\Console\Command;
-
 class ConvertJobFactory
 {
     /**
-     * @param \Illuminate\Console\Command $command
-     *
      * @return \Tintnaingwin\KuuPyaung\Convert\ConvertJob
      */
-    public static function create(Command $command)
+    public static function create()
     {
-        return (new ConvertJob())->setCommand($command)->setIncludeFiles(config('kuu-pyaung.include_files'));
+        return (new ConvertJob())
+            ->setFileJob(static::createFileJob())
+            ->setDbJob(static::createDbJob());
     }
 
+    /**
+     * @return \Tintnaingwin\KuuPyaung\Convert\DatabaseJob
+     */
+    protected static function createDbJob()
+    {
+        return new DatabaseJob();
+    }
+
+    /**
+     * @return \Tintnaingwin\KuuPyaung\Convert\FileJob
+     */
+    protected static function createFileJob()
+    {
+        return new FileJob();
+    }
 }
