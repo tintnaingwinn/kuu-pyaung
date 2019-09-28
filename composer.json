@@ -1,6 +1,6 @@
 {
   "name": "tintnaingwin/kuu-pyaung",
-  "description": "Laravel package to convert files and database from zawgyi to unicode",
+  "description": "Laravel package to convert resource files and database from zawgyi to unicode",
   "keywords": [
     "myanmar-font",
     "unicode",

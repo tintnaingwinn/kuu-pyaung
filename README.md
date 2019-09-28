@@ -1,13 +1,17 @@
-# Convert files and database from zawgyi to unicode for Laravel apps
+# Convert resources files and database from zawgyi to unicode for Laravel apps
+
+Kuu Pyaung Package converts resources files and databases from zawgyi to unicode.
+ 
+If the context is unicode, don't worry about the conflict context, Kuu Pyaung hasn't converted unicode context to unicode again. 
 
 ## Requirements
 
-#### version-1.x (under development)
+#### version-1.x
 
 - [PHP >= 5.6.4](http://php.net/)
 - [Laravel 5.2|5.3|5.4](https://github.com/laravel/framework)
 
-#### version-2.x (under development)
+#### version-2.x
 
 - [PHP >= 7.0](http://php.net/)
 - [Laravel 5.5|5.6|5.7](https://github.com/laravel/framework)
@@ -32,8 +36,22 @@
  
 ## Installation and usage
 
+For Laravel 5.8|6.x
+
 ``` bash
-composer require tintnaingwin/kuu-pyaung
+composer require tintnaingwin/kuu-pyaung:"~3.0"
+```
+
+For Laravel 5.5|5.6|5.7
+
+``` bash
+composer require tintnaingwin/kuu-pyaung:"~2.0"
+```
+
+For Laravel 5.2|5.3|5.4
+
+``` bash
+composer require tintnaingwin/kuu-pyaung:"~1.0"
 ```
 
 For laravel >=5.5 that's all. This package supports Laravel new [Package Discovery](https://laravel.com/docs/5.5/packages#package-discovery).
