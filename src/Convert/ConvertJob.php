@@ -22,9 +22,6 @@ class ConvertJob implements ConvertJobInterface
      */
     protected $dbJob;
 
-    /**
-     * @throws \Exception
-     */
     public function run()
     {
         if ($this->isConvertFiles) {
@@ -37,6 +34,8 @@ class ConvertJob implements ConvertJobInterface
     }
 
     /**
+     * Convert the resource files from zawgyi to unicode.
+     *
      * @return void
      */
     public function convertFolders()
@@ -45,6 +44,8 @@ class ConvertJob implements ConvertJobInterface
     }
 
     /**
+     * Convert the database from zawgyi to unicode.
+     *
      * @return void
      */
     public function convertDatabase()
@@ -53,6 +54,8 @@ class ConvertJob implements ConvertJobInterface
     }
 
     /**
+     * Set the DatabaseJob Object.
+     *
      * @return self
      */
     public function setDbJob(DatabaseJob $dbJob)
@@ -63,6 +66,7 @@ class ConvertJob implements ConvertJobInterface
     }
 
     /**
+     * Set the FileJob Object.
      * @return self
      */
     public function setFileJob(FileJob $fileJob)

@@ -15,4 +15,9 @@ class InvalidConvertJob extends Exception
     {
         return new static('there are no table to be converted.');
     }
+
+    public static function noPrimaryKey($table)
+    {
+        return new static("there are no primary key at the {$table} table");
+    }
 }
