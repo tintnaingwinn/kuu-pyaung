@@ -1,7 +1,10 @@
 <?php
+
 namespace Tintnaingwin\KuuPyaung\Tests\Commands;
+
 use Tintnaingwin\KuuPyaung\Tests\TestCase;
 use Illuminate\Support\Facades\Artisan;
+
 class ConvertCommandTest extends TestCase
 {
     /** @test */

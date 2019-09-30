@@ -5,6 +5,7 @@ namespace Tintnaingwin\KuuPyaung\Convert;
 use Doctrine\DBAL\DBALException;
 use Exception;
 use Doctrine\DBAL\Types\Type;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Tintnaingwin\KuuPyaung\Exceptions\InvalidConvertJob;
 use Tintnaingwin\KuuPyaung\Models\Dynamic;
@@ -33,6 +34,13 @@ class DatabaseJob
      * @var string[]
      */
     protected $tables;
+
+    /**
+     * The primary keys for the table.
+     *
+     * @var string[]
+     */
+    protected $primaryKeys = [ "id", "uuid" ];
 
     /**
      * DatabaseJob constructor.
@@ -85,8 +93,6 @@ class DatabaseJob
      */
     public function convertTable($table, $columns)
     {
-        $select_columns = $this->addIdColumn($columns);
-
         $model = new Dynamic();
         $model->setTable($table);
 
@@ -100,7 +106,7 @@ class DatabaseJob
 
         commandText()->getOutput()->progressStart($count);
 
-        $model->select($select_columns)->orderBy('id')->chunk(100, function ($data) use($columns){
+        $model->select($columns)->orderBy('id')->chunk(100, function ($data) use($columns){
             foreach ($data as $value) {
 
                 foreach ($columns as $column) {
@@ -115,18 +121,6 @@ class DatabaseJob
         });
 
         commandText()->getOutput()->progressFinish();
-    }
-
-    /**
-     * Add id column.
-     *
-     * @param array $columns
-     * @return array
-     */
-    protected function addIdColumn($columns)
-    {
-        array_push($columns, 'id');
-        return $columns;
     }
 
     /**
@@ -185,11 +179,23 @@ class DatabaseJob
      */
     protected function getTableStringColumns($table)
     {
-        $columns = $this->db_connection->getDoctrineSchemaManager()->listTableColumns($table);
+        try {
+            $columns = $this->db_connection->getDoctrineSchemaManager()->listTableColumns($table);
 
-        $columns = $this->filterTableColumns($columns);
+            if (! $this->hasPrimaryKey($columns)) {
+                throw InvalidConvertJob::noPrimaryKey($table);
+            }
 
-        return array_map('self::removeExtraQuotes', array_keys($columns));
+            $columns = $this->filterTableColumns($columns, $table);
+
+            return array_map('self::removeExtraQuotes', $columns);
+
+        } catch (Exception $exception) {
+            commandText()->error("Convert failed because {$exception->getMessage()}");
+            commandText()->getOutput()->newLine();
+
+            return [];
+        }
     }
 
     /**
@@ -198,19 +204,68 @@ class DatabaseJob
      * @param \Doctrine\DBAL\Schema\Column[] $columns
      * @return \Doctrine\DBAL\Schema\Column[]
      */
-    protected function filterTableColumns($columns)
+    protected function filterTableColumns($columns, $table)
     {
         $columns = array_filter($columns, function ($column)
-            {
-                /**
-                 * @var \Doctrine\DBAL\Schema\Column $column
-                 */
-                $column_data_type = $column->getType()->getName();
+        {
+            /**
+             * @var \Doctrine\DBAL\Schema\Column $column
+             */
+            if ($this->isPrimaryKey($column->getName())) {
+                return true;
+            }
 
-                return in_array($column_data_type, $this->columnDataTypes);
-            });
+            $column_data_type = $column->getType()->getName();
+
+            return in_array($column_data_type, $this->columnDataTypes);
+        });
+
+        $columns = array_keys($columns);
+
+        if ($exclude_table_columns = $this->getExcludeTableColumns($table)) {
+            $columns = array_diff($columns, $exclude_table_columns);
+        }
 
         return $columns;
+    }
+
+    /**
+     * Get the exclude_table_columns from the config.
+     *
+     * @param string $table
+     * @return array|null
+     */
+    protected function getExcludeTableColumns($table)
+    {
+        return config('kuu-pyaung.exclude_table_columns.'.$table);
+    }
+
+    /**
+     * Determine the column is primary or not.
+     *
+     * @param $name
+     * @return bool
+     */
+    protected function isPrimaryKey($name)
+    {
+        return in_array($name, $this->primaryKeys);
+    }
+
+    /**
+     * Determine if the primary key exist or not in the table.
+     *
+     * @param $columns
+     * @return bool
+     */
+    protected function hasPrimaryKey($columns)
+    {
+        foreach ($this->primaryKeys as $primaryKey) {
+            if (Arr::exists($columns, $primaryKey)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -219,7 +274,8 @@ class DatabaseJob
      * @param string $value
      * @return string
      */
-    protected function removeExtraQuotes($value) {
+    protected function removeExtraQuotes($value)
+    {
 
         return str_replace( array( "`", '"', "'" ),'',$value);
     }
