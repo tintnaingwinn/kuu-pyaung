@@ -1,4 +1,4 @@
-# Convert files and database from zawgyi to unicode for Laravel apps
+# Convert resource files and database from zawgyi to unicode for Laravel apps
 
 ## Requirements
 
@@ -33,7 +33,7 @@
 ## Installation and usage
 
 ``` bash
-composer require tintnaingwin/kuu-pyaung
+composer require tintnaingwin/kuu-pyaung:"~1.0"
 ```
 
 For laravel >=5.5 that's all. This package supports Laravel new [Package Discovery](https://laravel.com/docs/5.5/packages#package-discovery).
@@ -95,6 +95,17 @@ return [
         'telescope_entries_tags',
         'telescope_monitoring',
     ],
+    
+    /*
+     * These database table columns will be excluded from the convert.
+     *
+     * The value of the some columns may be filenames or you don't want to convert.
+     * Eg - 'table_name' => [ 'exclude_column', 'exclude_column' ]
+     */
+    'exclude_table_columns' => [
+        'users' => [ 'profile_pic', 'file_path' ],
+        'orders' => [ 'invoice_path' ]
+    ]
 ];
 ```
 
@@ -114,7 +125,8 @@ This package convert only folder under the `resource directories`. You can deter
 
 **Database Convert**
 
-This package convert only `string` data types from database. You can determine which tables will be excluded from the convert. 
+*Exclude Tables* - Kuu Pyaung converts only `string` data types from database. You can determine which tables will be excluded from the convert.
+In addition, if your table does not have `primary key (id or UUID)`, this table will not be converted.  
 
 ``` php
     /*
@@ -130,6 +142,22 @@ This package convert only `string` data types from database. You can determine w
     ],
 ```
 
+*Exclude Columns* - If the value of some columns is maybe zawgyi filenames or file paths. you can add these columns in the exclude_table_columns at the config file. 
+
+``` php
+    /*
+     * These database table columns will be excluded from the convert.
+     *
+     * The value of the some columns may be filenames that you don't want to convert.
+     * Eg - 'table_name' => [ 'exclude_column', 'exclude_column' ]
+     */
+    'exclude_table_columns' => [
+        'users' => [ 'profile_pic', 'file_path' ],
+        'orders' => [ 'invoice_path' ]
+    ]
+```
+
+
 **We highly recommend that you should use maintenance mode when you convert the database tables in production server.**
 
 ### Supported databases
@@ -137,12 +165,6 @@ This package convert only `string` data types from database. You can determine w
 - MySQL
 - PostgreSQL
 - SQLite
-
-## Todo
-
-- Backup database
-- Restore database
-- Convert database with UI
 
 ## Testing
 
