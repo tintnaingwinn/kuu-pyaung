@@ -144,7 +144,7 @@ This package convert only folder under the `resource directories`. You can deter
 
 **Database Convert**
 
-Exclude Tables - Kuu Pyaung converts only `string` data types from the database. You can determine which tables will be excluded from the convert. In addition,
+*Exclude Tables* - Kuu Pyaung converts only `string` data types from the database. You can determine which tables will be excluded from the convert. In addition,
 if your table does not have `primary key (id or UUID)`, this table will not be converted. 
 
 ``` php
@@ -161,7 +161,7 @@ if your table does not have `primary key (id or UUID)`, this table will not be c
     ],
 ```
 
-Exclude Columns - If the value of some columns may be zawgyi filenames or file paths. you can add these columns in the exclude_table_columns at the config file.  
+*Exclude Columns* - If the value of some columns is maybe zawgyi filenames or file paths. you can add these columns in the exclude_table_columns at the config file.  
 
 ``` php
     /*
