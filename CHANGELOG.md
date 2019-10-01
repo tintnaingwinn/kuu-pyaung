@@ -15,6 +15,9 @@ All notable changes to `kuu-pyaung` will be documented in this file.
 ##  3.0.0 (2019-09-27)
 - initial release
 
+##  2.0.3 (2019-10-02)
+- fix base table not found
+
 ##  2.0.2 (2019-09-30)
 - fix database table primary key.
 - add excluded table columns.

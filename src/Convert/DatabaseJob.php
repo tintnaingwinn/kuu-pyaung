@@ -106,8 +106,10 @@ class DatabaseJob
 
         commandText()->getOutput()->progressStart($count);
 
-        $model->select($columns)->orderBy('id')->chunk(100, function ($data) use($columns){
+        $model->select($columns)->orderBy('id')->chunk(100, function ($data) use($table, $columns){
             foreach ($data as $value) {
+
+                $value->setTable($table);
 
                 foreach ($columns as $column) {
                     $value->{$column} = MyanFont::zg2uni($value->{$column});
