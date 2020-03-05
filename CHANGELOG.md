@@ -2,6 +2,9 @@
 
 All notable changes to `kuu-pyaung` will be documented in this file.
 
+##  3.0.4 (2020-02-05)
+- laravel 7 support
+
 ##  3.0.3 (2019-09-30)
 - fix database table primary key.
 - add excluded table columns.

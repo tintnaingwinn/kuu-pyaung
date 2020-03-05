@@ -1,5 +1,11 @@
 # Convert resources files and database from zawgyi to unicode for Laravel apps
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/tintnaingwin/kuu-pyaung.svg)](https://packagist.org/packages/tintnaingwin/myanfont)
+[![Laravel 7.x](https://img.shields.io/badge/Laravel-7.x-red.svg)](http://laravel.com)
+[![Laravel 6.x](https://img.shields.io/badge/Laravel-6.x-red.svg)](http://laravel.com)
+[![Laravel 5.x](https://img.shields.io/badge/Laravel-5.x-red.svg)](http://laravel.com)
+[![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://packagist.org/packages/tintnaingwin/myanfont)
+
 Kuu Pyaung Package converts resources files and databases from zawgyi to unicode.
  
 If the context is unicode, don't worry about the conflict context, Kuu Pyaung hasn't converted unicode context to unicode again. 
@@ -19,7 +25,7 @@ If the context is unicode, don't worry about the conflict context, Kuu Pyaung ha
 #### version-3.x
 
 - [PHP >= 7.2](http://php.net/)
-- [Laravel 5.8|6.x](https://github.com/laravel/framework)
+- [Laravel 5.8|6.x|7.x](https://github.com/laravel/framework)
 
 ## Laravel Version Compatibility
 
@@ -33,10 +39,11 @@ If the context is unicode, don't worry about the conflict context, Kuu Pyaung ha
 | 5.7.x   | 2.x     | >=7.1.3 |
 | 5.8.x   | 3.x     | >=7.2.0 |
 | 6.x     | 3.x     | >=7.2.0 |
+| 7.x     | 3.x     | >=7.2.5 |
  
 ## Installation and usage
 
-For Laravel 5.8|6.x
+For Laravel 5.8|6.x|7.x
 
 ``` bash
 composer require tintnaingwin/kuu-pyaung:"~3.0"
