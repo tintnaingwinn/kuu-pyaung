@@ -1,6 +1,7 @@
 # Convert resources files and database from zawgyi to unicode for Laravel apps
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tintnaingwin/kuu-pyaung.svg)](https://packagist.org/packages/tintnaingwin/myanfont)
+[![Laravel 8.x](https://img.shields.io/badge/Laravel-8.x-red.svg)](http://laravel.com)
 [![Laravel 7.x](https://img.shields.io/badge/Laravel-7.x-red.svg)](http://laravel.com)
 [![Laravel 6.x](https://img.shields.io/badge/Laravel-6.x-red.svg)](http://laravel.com)
 [![Laravel 5.x](https://img.shields.io/badge/Laravel-5.x-red.svg)](http://laravel.com)
@@ -40,10 +41,11 @@ If the context is unicode, don't worry about the conflict context, Kuu Pyaung ha
 | 5.8.x   | 3.x     | >=7.2.0 |
 | 6.x     | 3.x     | >=7.2.0 |
 | 7.x     | 3.x     | >=7.2.5 |
+| 8.x     | 3.x     | >=7.3   |
  
 ## Installation and usage
 
-For Laravel 5.8|6.x|7.x
+For Laravel 5.8|6.x|7.x|8.x
 
 ``` bash
 composer require tintnaingwin/kuu-pyaung:"~3.0"
@@ -192,6 +194,18 @@ if your table does not have `primary key (id or UUID)`, this table will not be c
 - MySQL
 - PostgreSQL
 - SQLite
+
+## Troubleshoot
+
+You can convert with kuu-pyaung in the following situations,
+
+The first thing if you are using the laravel <5.2 <br>
+The second thing you don't want to install current project.
+
+- First, create the [new laravel project](https://laravel.com/docs/8.x/installation#installing-laravel)
+- Make sure to join the database.
+- Make sure to install the [kuu-pyaung](#installation-and-usage)
+- After that you can convert with kuu-pyaung
 
 ## Testing
 
