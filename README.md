@@ -28,6 +28,11 @@ If the context is unicode, don't worry about the conflict context, Kuu Pyaung ha
 - [PHP >= 7.2](http://php.net/)
 - [Laravel 5.8|6.x|7.x](https://github.com/laravel/framework)
 
+#### version-4.x
+
+- [PHP >= 7.4](http://php.net/)
+- [Laravel 8.x](https://github.com/laravel/framework)
+
 ## Laravel Version Compatibility
 
 | Laravel | Package | PHP     |
@@ -41,11 +46,17 @@ If the context is unicode, don't worry about the conflict context, Kuu Pyaung ha
 | 5.8.x   | 3.x     | >=7.2.0 |
 | 6.x     | 3.x     | >=7.2.0 |
 | 7.x     | 3.x     | >=7.2.5 |
-| 8.x     | 3.x     | >=7.3   |
+| 8.x     | 4.x     | >=7.4   |
  
 ## Installation and usage
 
-For Laravel 5.8|6.x|7.x|8.x
+For Laravel 8.x
+
+``` bash
+composer require tintnaingwin/kuu-pyaung:"~4.0"
+```
+
+For Laravel 5.8|6.x|7.x
 
 ``` bash
 composer require tintnaingwin/kuu-pyaung:"~3.0"

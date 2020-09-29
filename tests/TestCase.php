@@ -5,7 +5,7 @@ namespace Tintnaingwin\KuuPyaung\Tests;
 use Tintnaingwin\KuuPyaung\KuuPyaungServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Illuminate\Contracts\Console\Kernel;
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -27,12 +27,17 @@ abstract class TestCase extends Orchestra
     {
         parent::setUp();
 
-        $this->setUpDatabase();
-
-        $this->app->make(EloquentFactory::class)->load(__DIR__.'/factories');
+        Factory::guessFactoryNamesUsing(
+            fn (string $modelName) => 'Tintnaingwin\\KuuPyaung\\Tests\\Database\\Factories\\UserFactory'
+        );
     }
 
-    protected function setUpDatabase()
+    /**
+     * @param \Illuminate\Foundation\Application $app
+     *
+     * @return void
+     */
+    public function getEnvironmentSetUp($app)
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
@@ -40,13 +45,6 @@ abstract class TestCase extends Orchestra
             $table->text('desc');
             $table->text('location');
             $table->text('weather');
-            $table->timestamps();
-        });
-
-        Schema::create('test_models', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->nullable();
-            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }
