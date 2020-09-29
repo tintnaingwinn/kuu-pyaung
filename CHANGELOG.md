@@ -2,6 +2,9 @@
 
 All notable changes to `kuu-pyaung` will be documented in this file.
 
+##  3.0.6 (2020-09-29)
+- laravel 8 support
+
 ##  3.0.5 (2020-02-05)
 - laravel 7 support
 
@@ -13,7 +16,7 @@ All notable changes to `kuu-pyaung` will be documented in this file.
 - add excluded table columns.
 
 ##  3.0.2 (2019-09-28)
-- updated README.md
+- update README.md
 
 ##  3.0.1 (2019-09-27)
 - fix extra double quote at column
