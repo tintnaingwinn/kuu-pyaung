@@ -1,11 +1,9 @@
 # Convert resources files and database from zawgyi to unicode for Laravel apps
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/tintnaingwin/kuu-pyaung.svg)](https://packagist.org/packages/tintnaingwin/myanfont)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/tintnaingwin/kuu-pyaung.svg)](https://packagist.org/packages/tintnaingwin/kuu-pyaung)
+[![Laravel 10.x](https://img.shields.io/badge/Laravel-10.x-red.svg)](http://laravel.com)
+[![Laravel 9.x](https://img.shields.io/badge/Laravel-9.x-red.svg)](http://laravel.com)
 [![Laravel 8.x](https://img.shields.io/badge/Laravel-8.x-red.svg)](http://laravel.com)
-[![Laravel 7.x](https://img.shields.io/badge/Laravel-7.x-red.svg)](http://laravel.com)
-[![Laravel 6.x](https://img.shields.io/badge/Laravel-6.x-red.svg)](http://laravel.com)
-[![Laravel 5.x](https://img.shields.io/badge/Laravel-5.x-red.svg)](http://laravel.com)
-[![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://packagist.org/packages/tintnaingwin/myanfont)
 
 Kuu Pyaung Package converts resources files and databases from zawgyi to unicode.
  
@@ -33,6 +31,11 @@ If the context is unicode, don't worry about the conflict context, Kuu Pyaung ha
 - [PHP >= 7.4](http://php.net/)
 - [Laravel 8.x](https://github.com/laravel/framework)
 
+#### version-5.x
+
+- [PHP >= 8.0](http://php.net/)
+- [Laravel 8.x|9.x|10.x](https://github.com/laravel/framework)
+
 ## Laravel Version Compatibility
 
 | Laravel | Package | PHP     |
@@ -47,6 +50,8 @@ If the context is unicode, don't worry about the conflict context, Kuu Pyaung ha
 | 6.x     | 3.x     | >=7.2.0 |
 | 7.x     | 3.x     | >=7.2.5 |
 | 8.x     | 4.x     | >=7.4   |
+| 9.x     | 5.x     | >=8.1   |
+| 10.x    | 5.x     | >=8.1   |
  
 ## Installation and usage
 
@@ -232,11 +237,15 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
+
+## Contributing
+
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-## Security
+## Security Vulnerabilities
 
-If you discover any security-related issues, please email amigo.k8@gmail.com instead of using the issue tracker.
+Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
 
 ## License
 

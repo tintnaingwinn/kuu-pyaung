@@ -7,7 +7,7 @@ class ConvertJobFactory
     /**
      * @return \Tintnaingwin\KuuPyaung\Convert\ConvertJob
      */
-    public static function create()
+    public static function create(): ConvertJob
     {
         return (new ConvertJob())
             ->setFileJob(static::createFileJob())
@@ -17,7 +17,7 @@ class ConvertJobFactory
     /**
      * @return \Tintnaingwin\KuuPyaung\Convert\DatabaseJob
      */
-    protected static function createDbJob()
+    protected static function createDbJob(): DatabaseJob
     {
         return new DatabaseJob();
     }
@@ -25,7 +25,7 @@ class ConvertJobFactory
     /**
      * @return \Tintnaingwin\KuuPyaung\Convert\FileJob
      */
-    protected static function createFileJob()
+    protected static function createFileJob(): FileJob
     {
         return new FileJob();
     }

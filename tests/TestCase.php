@@ -2,28 +2,24 @@
 
 namespace Tintnaingwin\KuuPyaung\Tests;
 
-use Tintnaingwin\KuuPyaung\KuuPyaungServiceProvider;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Schema;
+use Orchestra\Testbench\TestCase as Orchestra;
+use Tintnaingwin\KuuPyaung\KuuPyaungServiceProvider;
 
 abstract class TestCase extends Orchestra
 {
-    /**
-     * @param \Illuminate\Foundation\Application $app
-     *
-     * @return array
-     */
-    protected function getPackageProviders($app)
+    protected function getPackageProviders(Application $app): array
     {
         return [
             KuuPyaungServiceProvider::class,
         ];
     }
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -32,12 +28,7 @@ abstract class TestCase extends Orchestra
         );
     }
 
-    /**
-     * @param \Illuminate\Foundation\Application $app
-     *
-     * @return void
-     */
-    public function getEnvironmentSetUp($app)
+    public function getEnvironmentSetUp(Application $app): void
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
@@ -49,7 +40,7 @@ abstract class TestCase extends Orchestra
         });
     }
 
-    protected function seeInConsoleOutput($expectedText)
+    protected function seeInConsoleOutput($expectedText): void
     {
         $consoleOutput = $this->app[Kernel::class]->output();
 
@@ -60,7 +51,7 @@ abstract class TestCase extends Orchestra
         );
     }
 
-    protected function doNotSeeInConsoleOutput($unExpectedText)
+    protected function doNotSeeInConsoleOutput($unExpectedText): void
     {
         $consoleOutput = $this->app[Kernel::class]->output();
 

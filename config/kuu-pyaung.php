@@ -3,7 +3,7 @@
 return [
 
     /*
-     * These resource directories only will be convert.
+     * These resource directories only will convert.
      */
     'include_files' => [
         'views',
@@ -25,7 +25,7 @@ return [
     /*
      * These database table columns will be excluded from the convert.
      *
-     * The value of the some columns may be filenames or you don't want to convert.
+     * The value of some columns may be filenames, or you don't want to convert.
      * Eg - 'table_name' => [ 'exclude_column', 'exclude_column' ]
      */
     /*

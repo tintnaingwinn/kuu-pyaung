@@ -4,23 +4,19 @@ namespace Tintnaingwin\KuuPyaung\Convert;
 
 class ConvertJob implements ConvertJobInterface
 {
-    protected $isConvertFiles = true;
+    protected bool $isConvertFiles = true;
 
-    protected $isConvertDatabases = true;
+    protected bool $isConvertDatabases = true;
 
     /**
      * The FileJob implementation.
-     *
-     * @var FileJob
      */
-    protected $fileJob;
+    protected FileJob $fileJob;
 
     /**
      * The DatabaseJob implementation.
-     *
-     * @var DatabaseJob
      */
-    protected $dbJob;
+    protected DatabaseJob $dbJob;
 
     public function run()
     {
@@ -28,27 +24,23 @@ class ConvertJob implements ConvertJobInterface
             $this->convertFolders();
         }
 
-        if ($this->isConvertDatabases){
+        if ($this->isConvertDatabases) {
             $this->convertDatabase();
         }
     }
 
     /**
      * Convert the resource files from zawgyi to unicode.
-     *
-     * @return void
      */
-    public function convertFolders()
+    public function convertFolders(): void
     {
         $this->fileJob->convert();
     }
 
     /**
      * Convert the database from zawgyi to unicode.
-     *
-     * @return void
      */
-    public function convertDatabase()
+    public function convertDatabase(): void
     {
         $this->dbJob->convert();
     }
@@ -58,7 +50,7 @@ class ConvertJob implements ConvertJobInterface
      *
      * @return self
      */
-    public function setDbJob(DatabaseJob $dbJob)
+    public function setDbJob(DatabaseJob $dbJob): static
     {
         $this->dbJob = $dbJob;
 
@@ -67,9 +59,10 @@ class ConvertJob implements ConvertJobInterface
 
     /**
      * Set the FileJob Object.
+     *
      * @return self
      */
-    public function setFileJob(FileJob $fileJob)
+    public function setFileJob(FileJob $fileJob): static
     {
         $this->fileJob = $fileJob;
 
@@ -81,7 +74,7 @@ class ConvertJob implements ConvertJobInterface
      *
      * @return self
      */
-    public function dontConvertFiles()
+    public function dontConvertFiles(): static
     {
         $this->isConvertFiles = false;
 
@@ -93,7 +86,7 @@ class ConvertJob implements ConvertJobInterface
      *
      * @return self
      */
-    public function dontConvertDatabases()
+    public function dontConvertDatabases(): static
     {
         $this->isConvertDatabases = false;
 

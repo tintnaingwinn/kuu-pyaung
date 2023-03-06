@@ -2,32 +2,26 @@
 
 namespace Tintnaingwin\KuuPyaung\Doctrine;
 
-use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\Type;
 
 class OtherType extends Type
 {
     /**
      * @var string
      */
-    const NAME = 'other';
+    public const NAME = 'other';
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param array                                     $fieldDeclaration
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
-     */
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
-        return $platform->getGuidTypeDeclarationSQL($fieldDeclaration);
+        return $platform->getGuidTypeDeclarationSQL($column);
     }
 
     /**
      * {@inheritdoc}
      *
-     * @param mixed            $value    The value to convert.
-     * @param AbstractPlatform $platform The currently used database platform.
+     * @param  mixed  $value    The value to convert.
+     * @param  AbstractPlatform  $platform The currently used database platform.
      */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
@@ -36,21 +30,16 @@ class OtherType extends Type
 
     /**
      * {@inheritdoc}
-     *
-     * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return static::NAME;
     }
 
     /**
      * {@inheritdoc}
-     *
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
-     * @return boolean
      */
-    public function requiresSQLCommentHint(AbstractPlatform $platform)
+    public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;
     }

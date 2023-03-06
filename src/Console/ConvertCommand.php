@@ -14,10 +14,7 @@ class ConvertCommand extends Command
 
     protected $description = 'Run the convert from zawgyi to unicode.';
 
-    /**
-     * @return int
-     */
-    public function handle()
+    public function handle(): int
     {
         app(CommandOutput::class)->bind($this);
 
@@ -37,19 +34,21 @@ class ConvertCommand extends Command
             $convertJob->run();
 
             $this->info('Convert completed!');
-
         } catch (Exception $exception) {
-
             $this->error("Convert failed because: {$exception->getMessage()}.");
 
-            return 1;
+            return self::SUCCESS;
         }
+
+        return self::SUCCESS;
     }
 
     /**
      * Check the against invalid options.
+     *
+     * @throws InvalidCommand
      */
-    protected function guardAgainstInvalidOptions()
+    protected function guardAgainstInvalidOptions(): void
     {
         if ($this->option('only-database') && $this->option('only-files')) {
             throw InvalidCommand::create('Cannot use `only-database` and `only-files` together');

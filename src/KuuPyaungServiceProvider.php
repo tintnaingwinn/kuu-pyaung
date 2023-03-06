@@ -1,4 +1,5 @@
 <?php
+
 namespace Tintnaingwin\KuuPyaung;
 
 use Illuminate\Support\ServiceProvider;
@@ -9,10 +10,8 @@ class KuuPyaungServiceProvider extends ServiceProvider
 {
     /**
      * Boot the service provider.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->publishes([
             __DIR__.'/../config/kuu-pyaung.php' => config_path('kuu-pyaung.php'),
@@ -21,10 +20,8 @@ class KuuPyaungServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/kuu-pyaung.php', 'kuu-pyaung');
 

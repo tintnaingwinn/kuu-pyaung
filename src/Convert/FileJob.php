@@ -3,9 +3,9 @@
 namespace Tintnaingwin\KuuPyaung\Convert;
 
 use Exception;
+use Illuminate\Support\Facades\File;
 use Tintnaingwin\KuuPyaung\Exceptions\InvalidConvertJob;
 use Tintnaingwin\MyanFont\Facades\MyanFont;
-use Illuminate\Support\Facades\File;
 
 class FileJob
 {
@@ -31,7 +31,7 @@ class FileJob
     public function convert()
     {
         try {
-            if (!count($this->includeFolder)) {
+            if (! count($this->includeFolder)) {
                 throw InvalidConvertJob::noFilesToBeConvert();
             }
 
@@ -39,27 +39,26 @@ class FileJob
             commandText()->getOutput()->newLine();
 
             foreach ($this->includeFolder as $value) {
-
                 commandText()->info("Converting $value files...");
 
                 if ($this->isNotExistResourceFolder($value)) {
-                    commandText()->error(resource_path($value) . " directory does not exist in resource folder.");
+                    commandText()->error(resource_path($value).' directory does not exist in resource folder.');
                     commandText()->getOutput()->newLine();
+
                     continue;
                 }
 
                 $files = File::allFiles(resource_path($value));
 
-                if (!count($files)) {
+                if (! count($files)) {
                     commandText()->warn("There are no $value files to be converted.");
                     commandText()->getOutput()->newLine();
+
                     continue;
                 }
 
                 $this->convertFolder($value, $files);
-
             }
-
         } catch (Exception $exception) {
             commandText()->error("Convert failed because {$exception->getMessage()}");
             commandText()->getOutput()->newLine();
@@ -69,9 +68,8 @@ class FileJob
     /**
      * Convert the file contexts from zawgyi to unicode.
      *
-     * @param string $name
-     * @param \Symfony\Component\Finder\SplFileInfo[] $files
-     *
+     * @param  string  $name
+     * @param  \Symfony\Component\Finder\SplFileInfo[]  $files
      * @return void
      */
     public function convertFolder($name, $files)
@@ -79,12 +77,11 @@ class FileJob
         commandText()->getOutput()->progressStart(count($files));
 
         foreach ($files as $path => $value) {
-
             $content = $value->getContents();
 
             $data = MyanFont::zg2uni($content);
 
-            File::put(resource_path($name . '/' . $value->getRelativePathname()), $data);
+            File::put(resource_path($name.'/'.$value->getRelativePathname()), $data);
 
             commandText()->getOutput()->progressAdvance();
         }
@@ -95,17 +92,16 @@ class FileJob
     /**
      * Determine if the resource folder is not empty.
      *
-     * @param string $name
+     * @param  string  $name
      * @return bool
      */
     protected function isNotExistResourceFolder($name)
     {
-        return !File::exists(resource_path($name));
+        return ! File::exists(resource_path($name));
     }
 
     /**
-     * @param array $includeFolder
-     *
+     * @param  array  $includeFolder
      * @return self
      */
     public function setIncludeFiles($includeFolder)

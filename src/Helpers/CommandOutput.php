@@ -13,10 +13,7 @@ class CommandOutput
      */
     protected $command;
 
-    /**
-     * @param \Illuminate\Console\Command $command
-     */
-    public function bind(Command $command)
+    public function bind(Command $command): void
     {
         $this->command = $command;
     }
